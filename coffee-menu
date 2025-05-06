@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی تیک وی قهوه‌فروشی</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5e9d7;
+            color: #3c2f2f;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            direction: rtl;
+        }
+        h1 {
+            font-size: 2em;
+            color: #6f4e37;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.5em;
+            color: #8b5e3c;
+            margin: 20px 0 10px;
+        }
+        .menu-section {
+            margin-bottom: 30px;
+        }
+        .menu-item {
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 10px auto;
+            padding: 15px;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .menu-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #6f4e37;
+        }
+        .menu-item p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 0.9em;
+        }
+        .price {
+            font-weight: bold;
+            color: #a67b5b;
+        }
+        @media (max-width: 600px) {
+            .menu-item {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>منوی تیک وی قهوه‌فروشی</h1>
+    
+    <div class="menu-section">
+        <h2>قهوه‌های گرم</h2>
+        <div class="menu-item">
+            <h3>اسپرسو</h3>
+            <p>شات غلیظ قهوه با عطر قوی</p>
+            <p class="price">۵۰,۰۰۰ تومان</p>
+        </div>
+        <div class="menu-item">
+            <h3>لاته</h3>
+            <p>اسپرسو با شیر فوم‌دار و طعم ملایم</p>
+            <p class="price">۷۰,۰۰۰ تومان</p>
+        </div>
+    </div>
+    
+    <div class="menu-section">
+        <h2>قهوه‌های سرد</h2>
+        <div class="menu-item">
+            <h3>آیس لاته</h3>
+            <p>لاته خنک با یخ و طعم دلپذیر</p>
+            <p class="price">۷۵,۰۰۰ تومان</p>
+        </div>
+        <div class="menu-item">
+            <h3>کلد برو</h3>
+            <p>قهوه سرد دم‌کشیده با طعم نرم</p>
+            <p class="price">۸۰,۰۰۰ تومان</p>
+        </div>
+    </div>
+    
+    <div class="menu-section">
+        <h2>دسر و اسنک</h2>
+        <div class="menu-item">
+            <h3>کیک شکلاتی</h3>
+            <p>کیک نرم و شکلاتی با بافت مرطوب</p>
+            <p class="price">۴۵,۰۰۰ تومان</p>
+        </div>
+        <div class="menu-item">
+            <h3>کروسان</h3>
+            <p>کروسان تازه و کره‌ای</p>
+            <p class="price">۳۵,۰۰۰ تومان</p>
+        </div>
+    </div>
+</body>
+</html>
