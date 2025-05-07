@@ -15,7 +15,8 @@
         }
         body {
             font-family: 'IranSans', Arial, sans-serif;
-            background-color: #f3f4f6;
+            background-color: #111827;
+            color: #f3f4f6;
         }
         .menu-item:hover .item-image {
             transform: scale(1.05);
@@ -28,17 +29,42 @@
         }
         .tab-indicator {
             transition: all 0.3s ease;
-            background-color: #dc2626; /* Red indicator */
+            background-color: #4b5563;
+        }
+        .active-tab {
+            color: #f3f4f6;
+            font-weight: bold;
+        }
+        .nav-item.active {
+            background-color: #374151;
+            color: #f3f4f6;
+        }
+        .main-content {
+            transition: opacity 0.3s ease;
+        }
+        @media (max-width: 640px) {
+            .footer-icons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            .footer-icon {
+                flex-direction: column;
+                align-items: center;
+            }
+            .text-sm-responsive {
+                font-size: 0.875rem;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen pb-20 bg-gray-100">
+<body class="min-h-screen pb-20">
     <!-- Header -->
-    <header class="bg-gray-900 text-white py-6 shadow-lg">
+    <header class="bg-gray-900 text-white py-6 shadow-lg border-b border-gray-700">
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center">
                 <h1 class="text-3xl font-bold mb-2">بیگ ماگ</h1>
-                <p class="text-red-400">کافی شاپ تخصصی قهوه</p>
+                <p class="text-gray-400">کافی شاپ تخصصی قهوه</p>
             </div>
         </div>
     </header>
@@ -47,21 +73,21 @@
     <main class="container mx-auto px-4 py-8">
         <!-- Main Tabs -->
         <div class="flex justify-center mb-8 relative">
-            <div class="flex bg-gray-200 rounded-full p-1 shadow-inner">
+            <div class="flex bg-gray-800 rounded-full p-1 shadow-inner">
                 <button 
                     onclick="showMainTab('menu-content')" 
-                    class="main-tab px-6 py-2 rounded-full font-medium text-gray-800 transition-all duration-300 relative z-10"
+                    class="main-tab px-6 py-2 rounded-full font-medium text-gray-400 transition-all duration-300 relative z-10"
                     id="menu-tab"
                 >
-                    <i class="fas fa-mug-hot ml-2 text-red-600"></i>
+                    <i class="fas fa-mug-hot ml-2"></i>
                     منو
                 </button>
                 <button 
                     onclick="showMainTab('info-content')" 
-                    class="main-tab px-6 py-2 rounded-full font-medium text-gray-800 transition-all duration-300 relative z-10"
+                    class="main-tab px-6 py-2 rounded-full font-medium text-gray-400 transition-all duration-300 relative z-10"
                     id="info-tab"
                 >
-                    <i class="fas fa-info-circle ml-2 text-red-600"></i>
+                    <i class="fas fa-info-circle ml-2"></i>
                     اطلاعات
                 </button>
             </div>
@@ -74,182 +100,182 @@
             <div class="menu-nav flex overflow-x-auto py-2 mb-6 gap-2 scroll-smooth">
                 <button 
                     onclick="showMenu('hot-coffee')" 
-                    class="nav-item px-4 py-2 rounded-full bg-gray-800 text-white font-medium shadow-sm whitespace-nowrap flex items-center hover:bg-gray-700"
+                    class="nav-item px-4 py-2 rounded-full bg-gray-800 text-gray-300 font-medium shadow-sm whitespace-nowrap flex items-center hover:bg-gray-700 transition-colors"
                 >
-                    <i class="fas fa-fire ml-2 text-red-400"></i>
+                    <i class="fas fa-fire ml-2"></i>
                     قهوه گرم
                 </button>
                 <button 
                     onclick="showMenu('cold-coffee')" 
-                    class="nav-item px-4 py-2 rounded-full bg-gray-800 text-white font-medium shadow-sm whitespace-nowrap flex items-center hover:bg-gray-700"
+                    class="nav-item px-4 py-2 rounded-full bg-gray-800 text-gray-300 font-medium shadow-sm whitespace-nowrap flex items-center hover:bg-gray-700 transition-colors"
                 >
-                    <i class="fas fa-snowflake ml-2 text-red-400"></i>
+                    <i class="fas fa-snowflake ml-2"></i>
                     قهوه سرد
                 </button>
                 <button 
                     onclick="showMenu('tea')" 
-                    class="nav-item px-4 py-2 rounded-full bg-gray-800 text-white font-medium shadow-sm whitespace-nowrap flex items-center hover:bg-gray-700"
+                    class="nav-item px-4 py-2 rounded-full bg-gray-800 text-gray-300 font-medium shadow-sm whitespace-nowrap flex items-center hover:bg-gray-700 transition-colors"
                 >
-                    <i class="fas fa-leaf ml-2 text-red-400"></i>
+                    <i class="fas fa-leaf ml-2"></i>
                     چای ویژه
                 </button>
                 <button 
                     onclick="showMenu('dessert')" 
-                    class="nav-item px-4 py-2 rounded-full bg-gray-800 text-white font-medium shadow-sm whitespace-nowrap flex items-center hover:bg-gray-700"
+                    class="nav-item px-4 py-2 rounded-full bg-gray-800 text-gray-300 font-medium shadow-sm whitespace-nowrap flex items-center hover:bg-gray-700 transition-colors"
                 >
-                    <i class="fas fa-ice-cream ml-2 text-red-400"></i>
+                    <i class="fas fa-ice-cream ml-2"></i>
                     دسر
                 </button>
             </div>
 
             <!-- Hot Coffee Menu -->
             <div id="hot-coffee" class="menu-content grid gap-6">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                    <div class="p-4 border-b border-gray-200 bg-gray-800 text-white">
+                <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
+                    <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-fire text-red-400 ml-2"></i>
+                            <i class="fas fa-fire ml-2"></i>
                             اسپرسو
                         </h3>
                     </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                    <div class="divide-y divide-gray-700">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-coffee"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">اسپرسو روبستا</h4>
-                                <p class="text-sm text-gray-600 mt-1">شات غلیظ با طعم قوی و تلخ</p>
+                                <h4 class="font-bold text-gray-100">اسپرسو روبستا</h4>
+                                <p class="text-sm text-gray-400 mt-1">شات غلیظ با طعم قوی و تلخ</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۵۰,۰۰۰ تومان
                             </div>
                         </div>
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-coffee"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">اسپرسو عربیکا</h4>
-                                <p class="text-sm text-gray-600 mt-1">شات ملایم با عطر میوه‌ای</p>
+                                <h4 class="font-bold text-gray-100">اسپرسو عربیکا</h4>
+                                <p class="text-sm text-gray-400 mt-1">شات ملایم با عطر میوه‌ای</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۶۰,۰۰۰ تومان
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                    <div class="p-4 border-b border-gray-200 bg-gray-800 text-white">
+                <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
+                    <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-mug-hot text-red-400 ml-2"></i>
+                            <i class="fas fa-mug-hot ml-2"></i>
                             آمریکانو
                         </h3>
                     </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                    <div class="divide-y divide-gray-700">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-hot"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">آمریکانو روبستا</h4>
-                                <p class="text-sm text-gray-600 mt-1">قهوه رقیق با طعم قوی و کلاسیک</p>
+                                <h4 class="font-bold text-gray-100">آمریکانو روبستا</h4>
+                                <p class="text-sm text-gray-400 mt-1">قهوه رقیق با طعم قوی و کلاسیک</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۶۰,۰۰۰ تومان
                             </div>
                         </div>
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-hot"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">آمریکانو عربیکا</h4>
-                                <p class="text-sm text-gray-600 mt-1">قهوه ملایم با طعم متعادل</p>
+                                <h4 class="font-bold text-gray-100">آمریکانو عربیکا</h4>
+                                <p class="text-sm text-gray-400 mt-1">قهوه ملایم با طعم متعادل</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۷۰,۰۰۰ تومان
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                    <div class="p-4 border-b border-gray-200 bg-gray-800 text-white">
+                <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
+                    <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-mug-saucer text-red-400 ml-2"></i>
+                            <i class="fas fa-mug-saucer ml-2"></i>
                             لاته
                         </h3>
                     </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                    <div class="divide-y divide-gray-700">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-saucer"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">لاته روبستا</h4>
-                                <p class="text-sm text-gray-600 mt-1">اسپرسو با شیر فوم‌دار و طعم قوی</p>
+                                <h4 class="font-bold text-gray-100">لاته روبستa</h4>
+                                <p class="text-sm text-gray-400 mt-1">اسپرسو با شیر فوم‌دار و طعم قوی</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۷۵,۰۰۰ تومان
                             </div>
                         </div>
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-saucer"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">لاته عربیکا</h4>
-                                <p class="text-sm text-gray-600 mt-1">اسپرسو با شیر و طعم ملایم‌تر</p>
+                                <h4 class="font-bold text-gray-100">لاته عربیکا</h4>
+                                <p class="text-sm text-gray-400 mt-1">اسپرسو با شیر و طعم ملایم‌تر</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۸۵,۰۰۰ تومان
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                    <div class="p-4 border-b border-gray-200 bg-gray-800 text-white">
+                <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
+                    <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-crown text-red-400 ml-2"></i>
+                            <i class="fas fa-crown ml-2"></i>
                             ویژه
                         </h3>
                     </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                    <div class="divide-y divide-gray-700">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-crown"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">کاپوچینو</h4>
-                                <p class="text-sm text-gray-600 mt-1">اسپرسو با فوم شیر و طعم متعادل</p>
+                                <h4 class="font-bold text-gray-100">کاپوچینو</h4>
+                                <p class="text-sm text-gray-400 mt-1">اسپرسو با فوم شیر و طعم متعادل</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۹۰,۰۰۰ تومان
                             </div>
                         </div>
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mortar-pestle"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">ماسالا</h4>
-                                <p class="text-sm text-gray-600 mt-1">نوشیدنی گرم با ادویه‌های هندی</p>
+                                <h4 class="font-bold text-gray-100">ماسالا</h4>
+                                <p class="text-sm text-gray-400 mt-1">نوشیدنی گرم با ادویه‌های هندی</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۸۰,۰۰۰ تومان
                             </div>
                         </div>
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-marshmallows"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">هات چاکلت</h4>
-                                <p class="text-sm text-gray-600 mt-1">شکلات داغ غلیظ و خامه‌ای</p>
+                                <h4 class="font-bold text-gray-100">هات چاکلت</h4>
+                                <p class="text-sm text-gray-400 mt-1">شکلات داغ غلیظ و خامه‌ای</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۹۰,۰۰۰ تومان
                             </div>
                         </div>
@@ -259,70 +285,70 @@
 
             <!-- Cold Coffee Menu -->
             <div id="cold-coffee" class="menu-content hidden grid gap-6">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                    <div class="p-4 border-b border-gray-200 bg-gray-800 text-white">
+                <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
+                    <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-snowflake text-red-400 ml-2"></i>
+                            <i class="fas fa-snowflake ml-2"></i>
                             لاته سرد
                         </h3>
                     </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                    <div class="divide-y divide-gray-700">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-glass-water"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">آیس لاته روبستا</h4>
-                                <p class="text-sm text-gray-600 mt-1">لاته سرد با طعم قوی و یخ</p>
+                                <h4 class="font-bold text-gray-100">آیس لاته روبستا</h4>
+                                <p class="text-sm text-gray-400 mt-1">لاته سرد با طعم قوی و یخ</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۸۰,۰۰۰ تومان
                             </div>
                         </div>
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-glass-water"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">آیس لاته عربیکa</h4>
-                                <p class="text-sm text-gray-600 mt-1">لاته سرد با طعم ملایم و یخ</p>
+                                <h4 class="font-bold text-gray-100">آیس لاته عربیکا</h4>
+                                <p class="text-sm text-gray-400 mt-1">لاته سرد با طعم ملایم و یخ</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۹۰,۰۰۰ تومان
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                    <div class="p-4 border-b border-gray-200 bg-gray-800 text-white">
+                <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
+                    <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-temperature-low text-red-400 ml-2"></i>
+                            <i class="fas fa-temperature-low ml-2"></i>
                             آمریکانو سرد
                         </h3>
                     </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                    <div class="divide-y divide-gray-700">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-hot"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">آیس آمریکانو روبستا</h4>
-                                <p class="text-sm text-gray-600 mt-1">قهوه سرد رقیق با طعم قوی</p>
+                                <h4 class="font-bold text-gray-100">آیس آمریکانو روبستا</h4>
+                                <p class="text-sm text-gray-400 mt-1">قهوه سرد رقیق با طعم قوی</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۶۵,۰۰۰ تومان
                             </div>
                         </div>
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-hot"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">آیس آمریکانو عربیکا</h4>
-                                <p class="text-sm text-gray-600 mt-1">قهوه سرد با طعم متعادل</p>
+                                <h4 class="font-bold text-gray-100">آیس آمریکانو عربیکا</h4>
+                                <p class="text-sm text-gray-400 mt-1">قهوه سرد با طعم متعادل</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۷۵,۰۰۰ تومان
                             </div>
                         </div>
@@ -332,23 +358,23 @@
 
             <!-- Tea Menu -->
             <div id="tea" class="menu-content hidden grid gap-6">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                    <div class="p-4 border-b border-gray-200 bg-gray-800 text-white">
+                <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
+                    <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-leaf text-red-400 ml-2"></i>
+                            <i class="fas fa-leaf ml-2"></i>
                             چای ویژه
                         </h3>
                     </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                    <div class="divide-y divide-gray-700">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-tea"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">چای کرک</h4>
-                                <p class="text-sm text-gray-600 mt-1">چای خامه‌ای با ادویه‌های گرم</p>
+                                <h4 class="font-bold text-gray-100">چای کرک</h4>
+                                <p class="text-sm text-gray-400 mt-1">چای خامه‌ای با ادویه‌های گرم</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۸۰,۰۰۰ تومان
                             </div>
                         </div>
@@ -358,23 +384,23 @@
 
             <!-- Dessert Menu -->
             <div id="dessert" class="menu-content hidden grid gap-6">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                    <div class="p-4 border-b border-gray-200 bg-gray-800 text-white">
+                <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
+                    <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-ice-cream text-red-400 ml-2"></i>
+                            <i class="fas fa-ice-cream ml-2"></i>
                             دسر و افزودنی
                         </h3>
                     </div>
-                    <div class="divide-y divide-gray-200">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-50 transition-colors">
-                            <div class="item-image w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-gray-800 text-2xl transition-transform">
+                    <div class="divide-y divide-gray-700">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-bottle-water"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-800">سیروپ (خارجی)</h4>
-                                <p class="text-sm text-gray-600 mt-1">طعم‌دهنده خارجی برای نوشیدنی‌ها</p>
+                                <h4 class="font-bold text-gray-100">سیروپ (خارجی)</h4>
+                                <p class="text-sm text-gray-400 mt-1">طعم‌دهنده خارجی برای نوشیدنی‌ها</p>
                             </div>
-                            <div class="price-badge bg-red-100 text-red-800 px-3 py-1 rounded-full font-bold">
+                            <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۳۰,۰۰۰ تومان
                             </div>
                         </div>
@@ -385,61 +411,61 @@
 
         <!-- Info Content -->
         <div id="info-content" class="main-content hidden">
-            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+            <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
                 <div class="p-6">
                     <div class="text-center mb-6">
-                        <div class="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center text-gray-800 text-4xl mb-4 border-2 border-red-400">
+                        <div class="w-24 h-24 bg-gray-700 rounded-full mx-auto flex items-center justify-center text-gray-300 text-4xl mb-4 border-2 border-gray-600">
                             <i class="fas fa-store"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-800">بیگ ماگ</h2>
-                        <p class="text-red-600 mt-1">کافی شاپ تخصصی قهوه</p>
+                        <h2 class="text-2xl font-bold text-gray-100">بیگ ماگ</h2>
+                        <p class="text-gray-400 mt-1">کافی شاپ تخصصی قهوه</p>
                     </div>
 
                     <div class="space-y-4">
                         <div class="flex items-start gap-3">
-                            <div class="bg-gray-100 text-gray-800 p-2 rounded-lg border border-gray-200">
+                            <div class="bg-gray-700 text-gray-300 p-2 rounded-lg border border-gray-600">
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800">ساعات کاری</h4>
-                                <p class="text-gray-600">۸ صبح تا ۱۰ شب</p>
+                                <h4 class="font-bold text-gray-100">ساعات کاری</h4>
+                                <p class="text-gray-400">۸ صبح تا ۱۰ شب</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <div class="bg-gray-100 text-gray-800 p-2 rounded-lg border border-gray-200">
+                            <div class="bg-gray-700 text-gray-300 p-2 rounded-lg border border-gray-600">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800">آدرس</h4>
-                                <p class="text-gray-600">تهران، خیابان ولیعصر، کوچه فلان، پلاک ۱۲</p>
+                                <h4 class="font-bold text-gray-100">آدرس</h4>
+                                <p class="text-gray-400">تهران، خیابان ولیعصر، کوچه فلان، پلاک ۱۲</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <div class="bg-gray-100 text-gray-800 p-2 rounded-lg border border-gray-200">
+                            <div class="bg-gray-700 text-gray-300 p-2 rounded-lg border border-gray-600">
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800">تلفن</h4>
-                                <p class="text-gray-600">۰۹۱۲XXXYYYY</p>
+                                <h4 class="font-bold text-gray-100">تلفن</h4>
+                                <p class="text-gray-400">۰۹۱۲XXXYYYY</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <div class="bg-gray-100 text-gray-800 p-2 rounded-lg border border-gray-200">
+                            <div class="bg-gray-700 text-gray-300 p-2 rounded-lg border border-gray-600">
                                 <i class="fab fa-instagram"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800">اینستاگرام</h4>
-                                <p class="text-gray-600">@bigmug_cafe</p>
+                                <h4 class="font-bold text-gray-100">اینستاگرام</h4>
+                                <p class="text-gray-400">@bigmug_cafe</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-gray-200">
-                        <h3 class="font-bold text-gray-800 mb-3">درباره ما</h3>
-                        <p class="text-gray-600 text-justify">
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <h3 class="font-bold text-gray-100 mb-3">درباره ما</h3>
+                        <p class="text-gray-400 text-justify">
                             بیگ ماگ یک کافی شاپ تخصصی قهوه است که با استفاده از بهترین دانه‌های قهوه از سراسر جهان، تجربه‌ای منحصر به فرد از طعم قهوه را برای شما به ارمغان می‌آورد. ما معتقدیم هر فنجان قهوه باید یک تجربه خاص باشد.
                         </p>
                     </div>
@@ -449,16 +475,26 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-4 fixed bottom-0 w-full shadow-lg">
+    <footer class="bg-gray-900 text-white py-4 fixed bottom-0 w-full shadow-lg border-t border-gray-700">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center mb-2 md:mb-0">
-                    <i class="fas fa-phone ml-2 text-red-400"></i>
-                    <span>۰۹۱۲XXXYYYY</span>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 footer-icons">
+                <div class="flex items-center gap-2 footer-icon">
+                    <div class="bg-gray-700 p-2 rounded-full">
+                        <i class="fas fa-phone text-gray-300 text-sm-responsive"></i>
+                    </div>
+                    <span class="text-sm-responsive">۰۹۱۲XXXYYYY</span>
                 </div>
-                <div class="flex items-center">
-                    <i class="fab fa-instagram ml-2 text-red-400"></i>
-                    <span>@bigmug_cafe</span>
+                <div class="flex items-center gap-2 footer-icon">
+                    <div class="bg-gray-700 p-2 rounded-full">
+                        <i class="fab fa-instagram text-gray-300 text-sm-responsive"></i>
+                    </div>
+                    <span class="text-sm-responsive">@bigmug_cafe</span>
+                </div>
+                <div class="flex items-center gap-2 footer-icon">
+                    <div class="bg-gray-700 p-2 rounded-full">
+                        <i class="fas fa-language text-gray-300 text-sm-responsive"></i>
+                    </div>
+                    <span class="text-sm-responsive">English</span>
                 </div>
             </div>
         </div>
@@ -467,7 +503,7 @@
     <script>
         // Set initial active tab
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('menu-tab').classList.add('active');
+            document.getElementById('menu-tab').classList.add('active-tab');
             document.querySelector('.nav-item').classList.add('active');
         });
 
@@ -492,9 +528,9 @@
             
             // Update active tab
             document.querySelectorAll('.main-tab').forEach(tab => {
-                tab.classList.remove('active');
+                tab.classList.remove('active-tab');
             });
-            event.target.classList.add('active');
+            event.target.classList.add('active-tab');
         }
 
         function showMenu(category) {
