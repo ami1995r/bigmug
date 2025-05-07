@@ -3,32 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی تیک وی قهوه‌فروشی</title>
+    <title>منوی بیگ ماگ</title>
+    <link href="https://fonts.googleapis.com/css2?family=IranSans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f5e9d7;
-            color: #3c2f2f;
+            font-family: 'IranSans', Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
             margin: 0;
             padding: 20px;
             text-align: center;
             direction: rtl;
         }
         h1 {
-            font-size: 2em;
-            color: #6f4e37;
+            font-size: 2.5em;
+            color: #4a2c2a;
             margin-bottom: 20px;
         }
-        h2 {
-            font-size: 1.5em;
-            color: #8b5e3c;
-            margin: 20px 0 10px;
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
-        .menu-section {
-            margin-bottom: 30px;
+        .tab-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #4a2c2a;
+        }
+        .tab-button.active {
+            background-color: #4a2c2a;
+            color: #fff;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
         }
         .menu-item {
-            background-color: #fff;
+            background-color: #f9f9f9;
             border-radius: 10px;
             margin: 10px auto;
             padding: 15px;
@@ -38,46 +56,102 @@
         .menu-item h3 {
             margin: 0;
             font-size: 1.2em;
-            color: #6f4e37;
+            color: #4a2c2a;
         }
         .menu-item p {
             margin: 5px 0;
-            color: #555;
-            font-size: 0.9em;
+            color: #666;
         }
         .price {
-            font-weight: bold;
-            color: #a67b5b;
+            font-weight: 500;
+            color: #7b5d5a;
+        }
+        @media (max-width: 600px) {
+            .menu-item {
+                max-width: 90%;
+            }
+            .tabs {
+                flex-direction: column;
+                gap: 5px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>منوی تیک وی قهوه‌فروشی</h1>
-    <div class="menu-section">
-        <h2>قهوه‌های گرم</h2>
+    <h1>بیگ ماگ</h1>
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab('hot-coffee')">قهوه گرم</button>
+        <button class="tab-button" onclick="openTab('cold-coffee')">قهوه سرد</button>
+        <button class="tab-button" onclick="openTab('tea')">چای</button>
+        <button class="tab-button" onclick="openTab('dessert')">دسر</button>
+    </div>
+
+    <div id="hot-coffee" class="tab-content active">
         <div class="menu-item">
             <h3>اسپرسو</h3>
-            <p>شات غلیظ قهوه با عطر قوی</p>
-            <p class="price">۵۰,۰۰۰ تومان</p>
+            <p>روبستا: ۵۰,۰۰۰ تومان - عربیکا: ۶۰,۰۰۰ تومان</p>
+        </div>
+        <div class="menu-item">
+            <h3>آمریکانو</h3>
+            <p>روبستا: ۶۰,۰۰۰ تومان - عربیکا: ۷۰,۰۰۰ تومان</p>
         </div>
         <div class="menu-item">
             <h3>لاته</h3>
-            <p>اسپرسو با شیر فوم‌دار و طعم ملایم</p>
-            <p class="price">۷۰,۰۰۰ تومان</p>
+            <p>روبستا: ۷۵,۰۰۰ تومان - عربیکا: ۸۵,۰۰۰ تومان</p>
+        </div>
+        <div class="menu-item">
+            <h3>کاپوچینو</h3>
+            <p>۹۰,۰۰۰ تومان</p>
+        </div>
+        <div class="menu-item">
+            <h3>ماسالا</h3>
+            <p>۸۰,۰۰۰ تومان</p>
+        </div>
+        <div class="menu-item">
+            <h3>هات چاکلت</h3>
+            <p>۹۰,۰۰۰ تومان</p>
         </div>
     </div>
-    <div class="menu-section">
-        <h2>قهوه‌های سرد</h2>
+
+    <div id="cold-coffee" class="tab-content">
         <div class="menu-item">
             <h3>آیس لاته</h3>
-            <p>لاته خنک با یخ و طعم دلپذیر</p>
-            <p class="price">۷۵,۰۰۰ تومان</p>
+            <p>روبستا: ۸۰,۰۰۰ تومان - عربیکا: ۹۰,۰۰۰ تومان</p>
         </div>
         <div class="menu-item">
-            <h3>کلد برو</h3>
-            <p>قهوه سرد دم‌کشیده با طعم نرم</p>
-            <p class="price">۸۰,۰۰۰ تومان</p>
+            <h3>آیس آمریکانو</h3>
+            <p>روبستا: ۶۵,۰۰۰ تومان - عربیکا: ۷۵,۰۰۰ تومان</p>
         </div>
     </div>
+
+    <div id="tea" class="tab-content">
+        <div class="menu-item">
+            <h3>چای کرک</h3>
+            <p>۸۰,۰۰۰ تومان</p>
+        </div>
+    </div>
+
+    <div id="dessert" class="tab-content">
+        <div class="menu-item">
+            <h3>سیurop (خارجی)</h3>
+            <p>۳۰,۰۰۰ تومان</p>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
