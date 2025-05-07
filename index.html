@@ -89,9 +89,12 @@
         }
         .menu-content.active {
             display: block;
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
         }
         .menu-section {
             display: flex;
@@ -100,35 +103,43 @@
             margin-bottom: 20px;
         }
         .menu-item {
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.2s;
         }
         .menu-item:hover {
             transform: translateY(-3px);
         }
+        .menu-item-content {
+            text-align: right;
+        }
         .menu-item h3 {
             margin: 0;
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #000;
         }
         .menu-item .description {
             margin: 5px 0;
             color: #666;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
         .menu-item .price {
             font-weight: 500;
             color: #000;
+            font-size: 1em;
         }
         #info-content {
             padding: 20px;
             background-color: #f9f9f9;
             border-radius: 10px;
             box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            max-width: 800px;
+            margin: 0 auto;
         }
         #info-content p {
             margin: 10px 0;
@@ -143,6 +154,7 @@
             bottom: 0;
             width: 100%;
             z-index: 100;
+            text-align: center;
         }
         footer p {
             margin: 0;
@@ -159,7 +171,7 @@
                 font-size: 0.9em;
             }
             .menu-item {
-                padding: 12px;
+                padding: 8px;
             }
         }
     </style>
@@ -183,58 +195,76 @@
         <div id="hot-coffee" class="menu-content active">
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>اسپرسو روبستا</h3>
-                    <p class="description">شات غلیظ با طعم قوی و تلخ</p>
+                    <div class="menu-item-content">
+                        <h3>اسپرسو روبستا</h3>
+                        <p class="description">شات غلیظ با طعم قوی و تلخ</p>
+                    </div>
                     <p class="price">۵۰,۰۰۰ تومان</p>
                 </div>
                 <div class="menu-item">
-                    <h3>اسپرسو عربیکا</h3>
-                    <p class="description">شات ملایم با عطر میوه‌ای</p>
+                    <div class="menu-item-content">
+                        <h3>اسپرسو عربیکا</h3>
+                        <p class="description">شات ملایم با عطر میوه‌ای</p>
+                    </div>
                     <p class="price">۶۰,۰۰۰ تومان</p>
                 </div>
             </div>
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>آمریکانو روبستا</h3>
-                    <p class="description">قهوه رقیق با طعم قوی و کلاسیک</p>
+                    <div class="menu-item-content">
+                        <h3>آمریکانو روبستا</h3>
+                        <p class="description">قهوه رقیق با طعم قوی و کلاسیک</p>
+                    </div>
                     <p class="price">۶۰,۰۰۰ تومان</p>
                 </div>
                 <div class="menu-item">
-                    <h3>آمریکانو عربیکا</h3>
-                    <p class="description">قهوه ملایم با طعم متعادل</p>
+                    <div class="menu-item-content">
+                        <h3>آمریکانو عربیکا</h3>
+                        <p class="description">قهوه ملایم با طعم متعادل</p>
+                    </div>
                     <p class="price">۷۰,۰۰۰ تومان</p>
                 </div>
             </div>
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>لاته روبستا</h3>
-                    <p class="description">اسپرسو با شیر فوم‌دار و طعم قوی</p>
+                    <div class="menu-item-content">
+                        <h3>لاته روبستا</h3>
+                        <p class="description">اسپرسو با شیر فوم‌دار و طعم قوی</p>
+                    </div>
                     <p class="price">۷۵,۰۰۰ تومان</p>
                 </div>
                 <div class="menu-item">
-                    <h3>لاته عربیکا</h3>
-                    <p class="description">اسپرسو با شیر و طعم ملایم‌تر</p>
+                    <div class="menu-item-content">
+                        <h3>لاته عربیکا</h3>
+                        <p class="description">اسپرسو با شیر و طعم ملایم‌تر</p>
+                    </div>
                     <p class="price">۸۵,۰۰۰ تومان</p>
                 </div>
             </div>
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>کاپوچینو</h3>
-                    <p class="description">اسپرسو با فوم شیر و طعم متعادل</p>
+                    <div class="menu-item-content">
+                        <h3>کاپوچینو</h3>
+                        <p class="description">اسپرسو با فوم شیر و طعم متعادل</p>
+                    </div>
                     <p class="price">۹۰,۰۰۰ تومان</p>
                 </div>
             </div>
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>ماسالا</h3>
-                    <p class="description">نوشیدنی گرم با ادویه‌های هندی</p>
+                    <div class="menu-item-content">
+                        <h3>ماسالا</h3>
+                        <p class="description">نوشیدنی گرم با ادویه‌های هندی</p>
+                    </div>
                     <p class="price">۸۰,۰۰۰ تومان</p>
                 </div>
             </div>
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>هات چاکلت</h3>
-                    <p class="description">شکلات داغ غلیظ و خامه‌ای</p>
+                    <div class="menu-item-content">
+                        <h3>هات چاکلت</h3>
+                        <p class="description">شکلات داغ غلیظ و خامه‌ای</p>
+                    </div>
                     <p class="price">۹۰,۰۰۰ تومان</p>
                 </div>
             </div>
@@ -243,25 +273,33 @@
         <div id="cold-coffee" class="menu-content">
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>آیس لاته روبستا</h3>
-                    <p class="description">لاته سرد با طعم قوی و یخ</p>
+                    <div class="menu-item-content">
+                        <h3>آیس لاته روبستا</h3>
+                        <p class="description">لاته سرد با طعم قوی و یخ</p>
+                    </div>
                     <p class="price">۸۰,۰۰۰ تومان</p>
                 </div>
                 <div class="menu-item">
-                    <h3>آیس لاته عربیکا</h3>
-                    <p class="description">لاته سرد با طعم ملایم و یخ</p>
+                    <div class="menu-item-content">
+                        <h3>آیس لاته عربیکا</h3>
+                        <p class="description">لاته سرد با طعم ملایم و یخ</p>
+                    </div>
                     <p class="price">۹۰,۰۰۰ تومان</p>
                 </div>
             </div>
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>آیس آمریکانو روبستا</h3>
-                    <p class="description">قهوه سرد رقیق با طعم قوی</p>
+                    <div class="menu-item-content">
+                        <h3>آیس آمریکانو روبستا</h3>
+                        <p class="description">قهوه سرد رقیق با طعم قوی</p>
+                    </div>
                     <p class="price">۶۵,۰۰۰ تومان</p>
                 </div>
                 <div class="menu-item">
-                    <h3>آیس آمریکانو عربیکا</h3>
-                    <p class="description">قهوه سرد با طعم متعادل</p>
+                    <div class="menu-item-content">
+                        <h3>آیس آمریکانو عربیکا</h3>
+                        <p class="description">قهوه سرد با طعم متعادل</p>
+                    </div>
                     <p class="price">۷۵,۰۰۰ تومان</p>
                 </div>
             </div>
@@ -270,8 +308,10 @@
         <div id="tea" class="menu-content">
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>چای کرک</h3>
-                    <p class="description">چای خامه‌ای با ادویه‌های گرم</p>
+                    <div class="menu-item-content">
+                        <h3>چای کرک</h3>
+                        <p class="description">چای خامه‌ای با ادویه‌های گرم</p>
+                    </div>
                     <p class="price">۸۰,۰۰۰ تومان</p>
                 </div>
             </div>
@@ -280,8 +320,10 @@
         <div id="dessert" class="menu-content">
             <div class="menu-section">
                 <div class="menu-item">
-                    <h3>سیrop (خارجی)</h3>
-                    <p class="description">طعم‌دهنده خارجی برای نوشیدنی‌ها</p>
+                    <div class="menu-item-content">
+                        <h3>سیrop (خارجی)</h3>
+                        <p class="description">طعم‌دهنده خارجی برای نوشیدنی‌ها</p>
+                    </div>
                     <p class="price">۳۰,۰۰۰ تومان</p>
                 </div>
             </div>
