@@ -34,21 +34,24 @@
         .menu-nav {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin: 20px 0;
             flex-wrap: nowrap;
             overflow-x: auto;
             padding: 10px;
+            scroll-behavior: smooth;
         }
         .nav-item {
-            padding: 10px 20px;
-            font-size: 1.1em;
+            padding: 8px 15px;
+            font-size: 1em;
             background-color: #000;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
             color: #fff;
             transition: background-color 0.3s;
+            min-width: 100px;
+            text-align: center;
         }
         .nav-item.active {
             background-color: #555;
@@ -60,26 +63,27 @@
             display: none;
         }
         .menu-content.active {
-            display: flex;
-            flex-wrap: nowrap;
-            gap: 20px;
+            display: block;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            overflow-x: auto;
+        }
+        .menu-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
         }
         .menu-item {
-            background-color: #fff;
+            background-color: #f9f9f9;
             border-radius: 10px;
-            padding: 15px;
+            padding: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             text-align: right;
-            min-width: 200px;
-            flex: 0 0 auto;
         }
         .menu-item h3 {
             margin: 0;
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #000;
         }
         .menu-item p {
@@ -101,12 +105,18 @@
             font-size: 0.9em;
         }
         @media (max-width: 600px) {
-            .menu-content.active {
-                flex-wrap: nowrap;
-                overflow-x: auto;
+            .menu-nav {
+                gap: 10px;
+                padding: 10px;
+            }
+            .nav-item {
+                min-width: 80px;
+                padding: 6px 12px;
+                font-size: 0.9em;
+                border-radius: 10px;
             }
             .menu-item {
-                min-width: 180px;
+                padding: 8px;
             }
         }
     </style>
@@ -124,74 +134,94 @@
     </div>
 
     <div id="hot-coffee" class="menu-content active">
-        <div class="menu-item">
-            <h3>اسپرسو (روبستا)</h3>
-            <p class="price">۵۰,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>اسپرسو (روبستا)</h3>
+                <p class="price">۵۰,۰۰۰ تومان</p>
+            </div>
+            <div class="menu-item">
+                <h3>اسپرسو (عربیکا)</h3>
+                <p class="price">۶۰,۰۰۰ تومان</p>
+            </div>
         </div>
-        <div class="menu-item">
-            <h3>اسپرسو (عربیکا)</h3>
-            <p class="price">۶۰,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>آمریکانو (روبستا)</h3>
+                <p class="price">۶۰,۰۰۰ تومان</p>
+            </div>
+            <div class="menu-item">
+                <h3>آمریکانو (عربیکا)</h3>
+                <p class="price">۷۰,۰۰۰ تومان</p>
+            </div>
         </div>
-        <div class="menu-item">
-            <h3>آمریکانو (روبستا)</h3>
-            <p class="price">۶۰,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>لاته (روبستا)</h3>
+                <p class="price">۷۵,۰۰۰ تومان</p>
+            </div>
+            <div class="menu-item">
+                <h3>لاته (عربیکا)</h3>
+                <p class="price">۸۵,۰۰۰ تومان</p>
+            </div>
         </div>
-        <div class="menu-item">
-            <h3>آمریکانو (عربیکا)</h3>
-            <p class="price">۷۰,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>کاپوچینو</h3>
+                <p class="price">۹۰,۰۰۰ تومان</p>
+            </div>
         </div>
-        <div class="menu-item">
-            <h3>لاته (روبستا)</h3>
-            <p class="price">۷۵,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>ماسالا</h3>
+                <p class="price">۸۰,۰۰۰ تومان</p>
+            </div>
         </div>
-        <div class="menu-item">
-            <h3>لاته (عربیکا)</h3>
-            <p class="price">۸۵,۰۰۰ تومان</p>
-        </div>
-        <div class="menu-item">
-            <h3>کاپوچینو</h3>
-            <p class="price">۹۰,۰۰۰ تومان</p>
-        </div>
-        <div class="menu-item">
-            <h3>ماسالا</h3>
-            <p class="price">۸۰,۰۰۰ تومان</p>
-        </div>
-        <div class="menu-item">
-            <h3>هات چاکلت</h3>
-            <p class="price">۹۰,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>هات چاکلت</h3>
+                <p class="price">۹۰,۰۰۰ تومان</p>
+            </div>
         </div>
     </div>
 
     <div id="cold-coffee" class="menu-content">
-        <div class="menu-item">
-            <h3>آیس لاته (روبستا)</h3>
-            <p class="price">۸۰,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>آیس لاته (روبستا)</h3>
+                <p class="price">۸۰,۰۰۰ تومان</p>
+            </div>
+            <div class="menu-item">
+                <h3>آیس لاته (عربیکا)</h3>
+                <p class="price">۹۰,۰۰۰ تومان</p>
+            </div>
         </div>
-        <div class="menu-item">
-            <h3>آیس لاته (عربیکا)</h3>
-            <p class="price">۹۰,۰۰۰ تومان</p>
-        </div>
-        <div class="menu-item">
-            <h3>آیس آمریکانو (روبستا)</h3>
-            <p class="price">۶۵,۰۰۰ تومان</p>
-        </div>
-        <div class="menu-item">
-            <h3>آیس آمریکانو (عربیکا)</h3>
-            <p class="price">۷۵,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>آیس آمریکانو (روبستا)</h3>
+                <p class="price">۶۵,۰۰۰ تومان</p>
+            </div>
+            <div class="menu-item">
+                <h3>آیس آمریکانو (عربیکا)</h3>
+                <p class="price">۷۵,۰۰۰ تومان</p>
+            </div>
         </div>
     </div>
 
     <div id="tea" class="menu-content">
-        <div class="menu-item">
-            <h3>چای کرک</h3>
-            <p class="price">۸۰,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>چای کرک</h3>
+                <p class="price">۸۰,۰۰۰ تومان</p>
+            </div>
         </div>
     </div>
 
     <div id="dessert" class="menu-content">
-        <div class="menu-item">
-            <h3>سیrop (خارجی)</h3>
-            <p class="price">۳۰,۰۰۰ تومان</p>
+        <div class="menu-section">
+            <div class="menu-item">
+                <h3>سیrop (خارجی)</h3>
+                <p class="price">۳۰,۰۰۰ تومان</p>
+            </div>
         </div>
     </div>
 
