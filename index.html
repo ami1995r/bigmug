@@ -1,338 +1,515 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بیگ ماگ</title>
+    <title>بیگ ماگ | کافی شاپ تخصصی قهوه</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'IranSans', Arial, sans-serif;
-            background-color: #fff;
-            color: #000;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            direction: rtl;
-        }
         @font-face {
             font-family: 'IranSans';
             src: url('https://cdn.fontcdn.ir/Font/Persian/IranSans/IranSans.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
-        h1 {
-            font-size: 2em;
-            color: #000;
-            margin-bottom: 20px;
+        body {
+            font-family: 'IranSans', Arial, sans-serif;
+            background-color: #f5f5f5;
         }
-        .main-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
+        .menu-item:hover .item-image {
+            transform: scale(1.05);
         }
-        .main-tab {
-            padding: 10px 20px;
-            font-size: 1.1em;
-            background-color: #f0f0f0;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            color: #000;
-            transition: background-color 0.3s;
-        }
-        .main-tab.active {
-            background-color: #000;
-            color: #fff;
-        }
-        .main-tab:hover {
-            background-color: #e0e0e0;
-        }
-        .main-content {
+        .menu-nav::-webkit-scrollbar {
             display: none;
         }
-        .main-content.active {
-            display: block;
+        .price-badge {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .menu-nav {
-            display: flex;
-            justify-content: center; /* وسط‌چین در دسکتاپ */
-            gap: 15px;
-            margin: 20px 0;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding: 10px;
-            scroll-behavior: smooth;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-        }
-        .nav-item {
-            padding: 8px 15px;
-            font-size: 1em;
-            background-color: #f0f0f0;
-            border: none;
-            cursor: pointer;
-            border-radius: 20px;
-            color: #000;
-            transition: background-color 0.3s;
-            min-width: 100px;
-            text-align: center;
-        }
-        .nav-item.active {
-            background-color: #000;
-            color: #fff;
-        }
-        .nav-item:hover {
-            background-color: #e0e0e0;
-        }
-        .menu-content {
-            display: none;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-            margin-top: 20px; /* فاصله بین دسته‌ها و آیتم‌ها */
-        }
-        .menu-content.active {
-            display: block;
-        }
-        .menu-section {
-            display: flex;
-            flex-direction: column;
-            gap: 15px; /* فاصله بین آیتم‌ها */
-            margin-bottom: 20px;
-        }
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-        .menu-item:hover {
-            transform: translateY(-3px);
-        }
-        .menu-item-content {
-            text-align: right;
-        }
-        .menu-item h3 {
-            margin: 0;
-            font-size: 1.1em;
-            color: #000;
-        }
-        .menu-item .price {
-            font-weight: 500;
-            color: #000;
-            font-size: 1em;
-        }
-        #info-content {
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: 20px; /* فاصله با تب‌ها */
-        }
-        #info-content p {
-            margin: 10px 0;
-            font-size: 1em;
-            color: #666;
-        }
-        @media (max-width: 600px) {
-            .menu-nav {
-                gap: 10px;
-                padding: 10px;
-            }
-            .nav-item {
-                min-width: 80px;
-                padding: 6px 12px;
-                font-size: 0.9em;
-            }
-            .menu-item {
-                padding: 8px;
-            }
+        .tab-indicator {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
-<body>
-    <h1>بیگ ماگ</h1>
-
-    <div class="main-tabs">
-        <button class="main-tab active" onclick="showMainTab('menu-content')">منو</button>
-        <button class="main-tab" onclick="showMainTab('info-content')">اطلاعات تیک وی</button>
-    </div>
-
-    <div id="menu-content" class="main-content active">
-        <div class="menu-nav">
-            <button class="nav-item active" onclick="showMenu('hot-coffee')">قهوه گرم</button>
-            <button class="nav-item" onclick="showMenu('cold-coffee')">قهوه سرد</button>
-            <button class="nav-item" onclick="showMenu('tea')">چای</button>
-            <button class="nav-item" onclick="showMenu('dessert')">دسر</button>
-        </div>
-
-        <div id="hot-coffee" class="menu-content active">
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>اسپرسو روبستا</h3>
-                    </div>
-                    <p class="price">۵۰,۰۰۰ تومان</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>اسپرسو عربیکا</h3>
-                    </div>
-                    <p class="price">۶۰,۰۰۰ تومان</p>
-                </div>
-            </div>
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>آمریکانو روبستا</h3>
-                    </div>
-                    <p class="price">۶۰,۰۰۰ تومان</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>آمریکانو عربیکا</h3>
-                    </div>
-                    <p class="price">۷۰,۰۰۰ تومان</p>
-                </div>
-            </div>
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>لاته روبستا</h3>
-                    </div>
-                    <p class="price">۷۵,۰۰۰ تومان</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>لاته عربیکا</h3>
-                    </div>
-                    <p class="price">۸۵,۰۰۰ تومان</p>
-                </div>
-            </div>
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>کاپوچینو</h3>
-                    </div>
-                    <p class="price">۹۰,۰۰۰ تومان</p>
-                </div>
-            </div>
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>ماسالا</h3>
-                    </div>
-                    <p class="price">۸۰,۰۰۰ تومان</p>
-                </div>
-            </div>
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>هات چاکلت</h3>
-                    </div>
-                    <p class="price">۹۰,۰۰۰ تومان</p>
-                </div>
+<body class="min-h-screen pb-20">
+    <!-- Header -->
+    <header class="bg-amber-900 text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center">
+                <h1 class="text-3xl font-bold mb-2">بیگ ماگ</h1>
+                <p class="text-amber-200">کافی شاپ تخصصی قهوه</p>
             </div>
         </div>
+    </header>
 
-        <div id="cold-coffee" class="menu-content">
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>آیس لاته روبستا</h3>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Main Tabs -->
+        <div class="flex justify-center mb-8 relative">
+            <div class="flex bg-amber-100 rounded-full p-1 shadow-inner">
+                <button 
+                    onclick="showMainTab('menu-content')" 
+                    class="main-tab px-6 py-2 rounded-full font-medium text-amber-900 transition-all duration-300 relative z-10"
+                    id="menu-tab"
+                >
+                    <i class="fas fa-mug-hot ml-2"></i>
+                    منو
+                </button>
+                <button 
+                    onclick="showMainTab('info-content')" 
+                    class="main-tab px-6 py-2 rounded-full font-medium text-amber-900 transition-all duration-300 relative z-10"
+                    id="info-tab"
+                >
+                    <i class="fas fa-info-circle ml-2"></i>
+                    اطلاعات
+                </button>
+            </div>
+            <div id="tab-indicator" class="tab-indicator absolute h-full bg-amber-500 rounded-full top-0 left-0 w-1/2"></div>
+        </div>
+
+        <!-- Menu Content -->
+        <div id="menu-content" class="main-content">
+            <!-- Category Tabs -->
+            <div class="menu-nav flex overflow-x-auto py-2 mb-6 gap-2 scroll-smooth">
+                <button 
+                    onclick="showMenu('hot-coffee')" 
+                    class="nav-item px-4 py-2 rounded-full bg-white text-amber-900 font-medium shadow-sm whitespace-nowrap flex items-center"
+                >
+                    <i class="fas fa-fire ml-2"></i>
+                    قهوه گرم
+                </button>
+                <button 
+                    onclick="showMenu('cold-coffee')" 
+                    class="nav-item px-4 py-2 rounded-full bg-white text-amber-900 font-medium shadow-sm whitespace-nowrap flex items-center"
+                >
+                    <i class="fas fa-snowflake ml-2"></i>
+                    قهوه سرد
+                </button>
+                <button 
+                    onclick="showMenu('tea')" 
+                    class="nav-item px-4 py-2 rounded-full bg-white text-amber-900 font-medium shadow-sm whitespace-nowrap flex items-center"
+                >
+                    <i class="fas fa-leaf ml-2"></i>
+                    چای ویژه
+                </button>
+                <button 
+                    onclick="showMenu('dessert')" 
+                    class="nav-item px-4 py-2 rounded-full bg-white text-amber-900 font-medium shadow-sm whitespace-nowrap flex items-center"
+                >
+                    <i class="fas fa-ice-cream ml-2"></i>
+                    دسر
+                </button>
+            </div>
+
+            <!-- Hot Coffee Menu -->
+            <div id="hot-coffee" class="menu-content grid gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-amber-100 bg-amber-50">
+                        <h3 class="font-bold text-amber-900 text-lg">
+                            <i class="fas fa-fire text-amber-500 ml-2"></i>
+                            اسپرسو
+                        </h3>
                     </div>
-                    <p class="price">۸۰,۰۰۰ تومان</p>
+                    <div class="divide-y divide-amber-100">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-coffee"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">اسپرسو روبستا</h4>
+                                <p class="text-sm text-gray-600 mt-1">شات غلیظ با طعم قوی و تلخ</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۵۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-coffee"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">اسپرسو عربیکا</h4>
+                                <p class="text-sm text-gray-600 mt-1">شات ملایم با عطر میوه‌ای</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۶۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>آیس لاته عربیکا</h3>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-amber-100 bg-amber-50">
+                        <h3 class="font-bold text-amber-900 text-lg">
+                            <i class="fas fa-mug-hot text-amber-500 ml-2"></i>
+                            آمریکانو
+                        </h3>
                     </div>
-                    <p class="price">۹۰,۰۰۰ تومان</p>
+                    <div class="divide-y divide-amber-100">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-mug-hot"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">آمریکانو روبستا</h4>
+                                <p class="text-sm text-gray-600 mt-1">قهوه رقیق با طعم قوی و کلاسیک</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۶۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-mug-hot"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">آمریکانو عربیکا</h4>
+                                <p class="text-sm text-gray-600 mt-1">قهوه ملایم با طعم متعادل</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۷۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-amber-100 bg-amber-50">
+                        <h3 class="font-bold text-amber-900 text-lg">
+                            <i class="fas fa-mug-saucer text-amber-500 ml-2"></i>
+                            لاته
+                        </h3>
+                    </div>
+                    <div class="divide-y divide-amber-100">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-mug-saucer"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">لاته روبستا</h4>
+                                <p class="text-sm text-gray-600 mt-1">اسپرسو با شیر فوم‌دار و طعم قوی</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۷۵,۰۰۰ تومان
+                            </div>
+                        </div>
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-mug-saucer"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">لاته عربیکا</h4>
+                                <p class="text-sm text-gray-600 mt-1">اسپرسو با شیر و طعم ملایم‌تر</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۸۵,۰۰۰ تومان
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-amber-100 bg-amber-50">
+                        <h3 class="font-bold text-amber-900 text-lg">
+                            <i class="fas fa-crown text-amber-500 ml-2"></i>
+                            ویژه
+                        </h3>
+                    </div>
+                    <div class="divide-y divide-amber-100">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">کاپوچینو</h4>
+                                <p class="text-sm text-gray-600 mt-1">اسپرسو با فوم شیر و طعم متعادل</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۹۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-mortar-pestle"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">ماسالا</h4>
+                                <p class="text-sm text-gray-600 mt-1">نوشیدنی گرم با ادویه‌های هندی</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۸۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-amber-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-amber-200 flex items-center justify-center text-amber-800 text-2xl transition-transform">
+                                <i class="fas fa-mug-marshmallows"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">هات چاکلت</h4>
+                                <p class="text-sm text-gray-600 mt-1">شکلات داغ غلیظ و خامه‌ای</p>
+                            </div>
+                            <div class="price-badge bg-amber-100 text-amber-900 px-3 py-1 rounded-full font-bold">
+                                ۹۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>آیس آمریکانو روبستا</h3>
+
+            <!-- Cold Coffee Menu -->
+            <div id="cold-coffee" class="menu-content hidden grid gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-blue-100 bg-blue-50">
+                        <h3 class="font-bold text-blue-900 text-lg">
+                            <i class="fas fa-snowflake text-blue-500 ml-2"></i>
+                            لاته سرد
+                        </h3>
                     </div>
-                    <p class="price">۶۵,۰۰۰ تومان</p>
+                    <div class="divide-y divide-blue-100">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-blue-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-blue-200 flex items-center justify-center text-blue-800 text-2xl transition-transform">
+                                <i class="fas fa-glass-water"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">آیس لاته روبستا</h4>
+                                <p class="text-sm text-gray-600 mt-1">لاته سرد با طعم قوی و یخ</p>
+                            </div>
+                            <div class="price-badge bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold">
+                                ۸۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-blue-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-blue-200 flex items-center justify-center text-blue-800 text-2xl transition-transform">
+                                <i class="fas fa-glass-water"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">آیس لاته عربیکا</h4>
+                                <p class="text-sm text-gray-600 mt-1">لاته سرد با طعم ملایم و یخ</p>
+                            </div>
+                            <div class="price-badge bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold">
+                                ۹۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>آیس آمریکانو عربیکا</h3>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-blue-100 bg-blue-50">
+                        <h3 class="font-bold text-blue-900 text-lg">
+                            <i class="fas fa-temperature-low text-blue-500 ml-2"></i>
+                            آمریکانو سرد
+                        </h3>
                     </div>
-                    <p class="price">۷۵,۰۰۰ تومان</p>
+                    <div class="divide-y divide-blue-100">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-blue-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-blue-200 flex items-center justify-center text-blue-800 text-2xl transition-transform">
+                                <i class="fas fa-mug-hot"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">آیس آمریکانو روبستا</h4>
+                                <p class="text-sm text-gray-600 mt-1">قهوه سرد رقیق با طعم قوی</p>
+                            </div>
+                            <div class="price-badge bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold">
+                                ۶۵,۰۰۰ تومان
+                            </div>
+                        </div>
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-blue-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-blue-200 flex items-center justify-center text-blue-800 text-2xl transition-transform">
+                                <i class="fas fa-mug-hot"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">آیس آمریکانو عربیکا</h4>
+                                <p class="text-sm text-gray-600 mt-1">قهوه سرد با طعم متعادل</p>
+                            </div>
+                            <div class="price-badge bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold">
+                                ۷۵,۰۰۰ تومان
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tea Menu -->
+            <div id="tea" class="menu-content hidden grid gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-green-100 bg-green-50">
+                        <h3 class="font-bold text-green-900 text-lg">
+                            <i class="fas fa-leaf text-green-500 ml-2"></i>
+                            چای ویژه
+                        </h3>
+                    </div>
+                    <div class="divide-y divide-green-100">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-green-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-green-200 flex items-center justify-center text-green-800 text-2xl transition-transform">
+                                <i class="fas fa-mug-tea"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">چای کرک</h4>
+                                <p class="text-sm text-gray-600 mt-1">چای خامه‌ای با ادویه‌های گرم</p>
+                            </div>
+                            <div class="price-badge bg-green-100 text-green-900 px-3 py-1 rounded-full font-bold">
+                                ۸۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dessert Menu -->
+            <div id="dessert" class="menu-content hidden grid gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-4 border-b border-purple-100 bg-purple-50">
+                        <h3 class="font-bold text-purple-900 text-lg">
+                            <i class="fas fa-ice-cream text-purple-500 ml-2"></i>
+                            دسر و افزودنی
+                        </h3>
+                    </div>
+                    <div class="divide-y divide-purple-100">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-purple-50 transition-colors">
+                            <div class="item-image w-16 h-16 rounded-lg bg-purple-200 flex items-center justify-center text-purple-800 text-2xl transition-transform">
+                                <i class="fas fa-bottle-water"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">سیروپ (خارجی)</h4>
+                                <p class="text-sm text-gray-600 mt-1">طعم‌دهنده خارجی برای نوشیدنی‌ها</p>
+                            </div>
+                            <div class="price-badge bg-purple-100 text-purple-900 px-3 py-1 rounded-full font-bold">
+                                ۳۰,۰۰۰ تومان
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div id="tea" class="menu-content">
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>چای کرک</h3>
+        <!-- Info Content -->
+        <div id="info-content" class="main-content hidden">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="text-center mb-6">
+                        <div class="w-24 h-24 bg-amber-100 rounded-full mx-auto flex items-center justify-center text-amber-600 text-4xl mb-4">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">بیگ ماگ</h2>
+                        <p class="text-amber-600 mt-1">کافی شاپ تخصصی قهوه</p>
                     </div>
-                    <p class="price">۸۰,۰۰۰ تومان</p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-amber-100 text-amber-800 p-2 rounded-lg">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">ساعات کاری</h4>
+                                <p class="text-gray-600">۸ صبح تا ۱۰ شب</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="bg-amber-100 text-amber-800 p-2 rounded-lg">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">آدرس</h4>
+                                <p class="text-gray-600">تهران، خیابان ولیعصر، کوچه فلان، پلاک ۱۲</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="bg-amber-100 text-amber-800 p-2 rounded-lg">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">تلفن</h4>
+                                <p class="text-gray-600">۰۹۱۲XXXYYYY</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="bg-amber-100 text-amber-800 p-2 rounded-lg">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">اینستاگرام</h4>
+                                <p class="text-gray-600">@bigmug_cafe</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <h3 class="font-bold text-gray-800 mb-3">درباره ما</h3>
+                        <p class="text-gray-600 text-justify">
+                            بیگ ماگ یک کافی شاپ تخصصی قهوه است که با استفاده از بهترین دانه‌های قهوه از سراسر جهان، تجربه‌ای منحصر به فرد از طعم قهوه را برای شما به ارمغان می‌آورد. ما معتقدیم هر فنجان قهوه باید یک تجربه خاص باشد.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+    </main>
 
-        <div id="dessert" class="menu-content">
-            <div class="menu-section">
-                <div class="menu-item">
-                    <div class="menu-item-content">
-                        <h3>سیrop (خارجی)</h3>
-                    </div>
-                    <p class="price">۳۰,۰۰۰ تومان</p>
+    <!-- Footer -->
+    <footer class="bg-amber-900 text-white py-4 fixed bottom-0 w-full shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-2 md:mb-0">
+                    <i class="fas fa-phone ml-2 text-amber-300"></i>
+                    <span>۰۹۱۲XXXYYYY</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fab fa-instagram ml-2 text-amber-300"></i>
+                    <span>@bigmug_cafe</span>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div id="info-content" class="main-content">
-        <p>بیگ ماگ، یه تیک وی دنج برای عاشقان قهوه!</p>
-        <p>ساعات کاری: ۸ صبح تا ۱۰ شب</p>
-        <p>آدرس: [آدرس شما]</p>
-        <p>تماس: ۰۹۱۲XXXYYYY</p>
-        <p>اینستاگرام: @bigmug_cafe</p>
-    </div>
+    </footer>
 
     <script>
+        // Set initial active tab
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('menu-tab').classList.add('active');
+            document.querySelector('.nav-item').classList.add('active');
+        });
+
         function showMainTab(tabName) {
-            var contents = document.getElementsByClassName("main-content");
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].classList.remove("active");
+            // Hide all content
+            document.querySelectorAll('.main-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Show selected content
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Update tab indicator
+            const tabIndicator = document.getElementById('tab-indicator');
+            if (tabName === 'menu-content') {
+                tabIndicator.style.transform = 'translateX(0)';
+                tabIndicator.style.width = '50%';
+            } else {
+                tabIndicator.style.transform = 'translateX(100%)';
+                tabIndicator.style.width = '50%';
             }
-            var tabs = document.getElementsByClassName("main-tab");
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove("active");
-            }
-            document.getElementById(tabName).classList.add("active");
-            event.target.classList.add("active");
+            
+            // Update active tab
+            document.querySelectorAll('.main-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
         }
 
         function showMenu(category) {
-            var contents = document.getElementsByClassName("menu-content");
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].classList.remove("active");
-            }
-            var navItems = document.getElementsByClassName("nav-item");
-            for (var i = 0; i < navItems.length; i++) {
-                navItems[i].classList.remove("active");
-            }
-            document.getElementById(category).classList.add("active");
-            event.target.classList.add("active");
+            // Hide all menu content
+            document.querySelectorAll('.menu-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Show selected category
+            document.getElementById(category).classList.remove('hidden');
+            
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
         }
     </script>
 </body>
