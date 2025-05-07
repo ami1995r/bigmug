@@ -17,6 +17,7 @@
             font-family: 'IranSans', Arial, sans-serif;
             background-color: #111827;
             color: #f3f4f6;
+            padding-bottom: 80px;
         }
         .menu-item:hover .item-image {
             transform: scale(1.05);
@@ -42,23 +43,37 @@
         .main-content {
             transition: opacity 0.3s ease;
         }
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .footer-icon {
+            background-color: #374151;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .footer-icon:hover {
+            background-color: #4b5563;
+            transform: scale(1.1);
+        }
         @media (max-width: 640px) {
             .footer-icons {
-                flex-direction: row;
-                justify-content: center;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             .footer-icon {
-                flex-direction: column;
-                align-items: center;
-            }
-            .text-sm-responsive {
-                font-size: 0.875rem;
+                width: 36px;
+                height: 36px;
             }
         }
     </style>
 </head>
-<body class="min-h-screen pb-20">
+<body class="min-h-screen">
     <!-- Header -->
     <header class="bg-gray-900 text-white py-6 shadow-lg border-b border-gray-700">
         <div class="container mx-auto px-4">
@@ -155,7 +170,7 @@
                                 <i class="fas fa-coffee"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-100">اسپرسو عربیکا</h4>
+                                <h4 class="font-bold text-gray-100">اسپرسو عربیکa</h4>
                                 <p class="text-sm text-gray-400 mt-1">شات ملایم با عطر میوه‌ای</p>
                             </div>
                             <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
@@ -213,7 +228,7 @@
                                 <i class="fas fa-mug-saucer"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-bold text-gray-100">لاته روبستa</h4>
+                                <h4 class="font-bold text-gray-100">لاته روبستا</h4>
                                 <p class="text-sm text-gray-400 mt-1">اسپرسو با شیر فوم‌دار و طعم قوی</p>
                             </div>
                             <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
@@ -226,7 +241,7 @@
                             </div>
                             <div class="flex-1">
                                 <h4 class="font-bold text-gray-100">لاته عربیکا</h4>
-                                <p class="text-sm text-gray-400 mt-1">اسپرسو با شیر و طعم ملایم‌تر</p>
+                                <p class="text-sm text-gray-400 mt-1">اسپرسo با شیر و طعم ملایم‌تر</p>
                             </div>
                             <div class="price-badge bg-gray-700 text-gray-100 px-3 py-1 rounded-full font-bold border border-gray-600">
                                 ۸۵,۰۰۰ تومان
@@ -288,7 +303,7 @@
                 <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-700">
                     <div class="p-4 border-b border-gray-700 bg-gray-700 text-white">
                         <h3 class="font-bold text-lg">
-                            <i class="fas fa-snowflake ml-2"></i>
+                            <i class="fas fa-s snowflake ml-2"></i>
                             لاته سرد
                         </h3>
                     </div>
@@ -366,7 +381,7 @@
                         </h3>
                     </div>
                     <div class="divide-y divide-gray-700">
-                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-700 transition-colors">
+                        <div class="menu-item p-4 flex items-start gap-4 hover:bg-gray-7 00 transition-colors">
                             <div class="item-image w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center text-gray-300 text-2xl transition-transform">
                                 <i class="fas fa-mug-tea"></i>
                             </div>
@@ -477,25 +492,16 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-4 fixed bottom-0 w-full shadow-lg border-t border-gray-700">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6 footer-icons">
-                <div class="flex items-center gap-2 footer-icon">
-                    <div class="bg-gray-700 p-2 rounded-full">
-                        <i class="fas fa-phone text-gray-300 text-sm-responsive"></i>
-                    </div>
-                    <span class="text-sm-responsive">۰۹۱۲XXXYYYY</span>
-                </div>
-                <div class="flex items-center gap-2 footer-icon">
-                    <div class="bg-gray-700 p-2 rounded-full">
-                        <i class="fab fa-instagram text-gray-300 text-sm-responsive"></i>
-                    </div>
-                    <span class="text-sm-responsive">@bigmug_cafe</span>
-                </div>
-                <div class="flex items-center gap-2 footer-icon">
-                    <div class="bg-gray-700 p-2 rounded-full">
-                        <i class="fas fa-language text-gray-300 text-sm-responsive"></i>
-                    </div>
-                    <span class="text-sm-responsive">English</span>
-                </div>
+            <div class="flex justify-center items-center gap-6 footer-icons">
+                <a href="tel:0912XXXYYYY" class="footer-icon">
+                    <i class="fas fa-phone text-gray-300"></i>
+                </a>
+                <a href="https://instagram.com/bigmug_cafe" target="_blank" class="footer-icon">
+                    <i class="fab fa-instagram text-gray-300"></i>
+                </a>
+                <button onclick="translatePage()" class="footer-icon">
+                    <i class="fas fa-language text-gray-300"></i>
+                </button>
             </div>
         </div>
     </footer>
@@ -547,6 +553,11 @@
                 item.classList.remove('active');
             });
             event.target.classList.add('active');
+        }
+
+        function translatePage() {
+            // Placeholder for translation functionality
+            alert('Translation functionality will be implemented here');
         }
     </script>
 </body>
